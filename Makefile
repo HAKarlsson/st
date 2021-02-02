@@ -16,8 +16,7 @@ options:
 	@echo "CC      = $(CC)"
 
 config.h: config.def.h patches/config.h.diff
-	cp config.def.h config.h
-	git apply patches/config.h.diff
+	patch config.def.h patches/config.h.diff -o config.h
 
 .c.o:
 	$(CC) $(STCFLAGS) -c $<
@@ -31,7 +30,7 @@ st: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
 
 clean:
-	rm -f st $(OBJ) st-$(VERSION).tar.gz
+	rm -f st $(OBJ) st-$(VERSION).tar.gz config.h
 
 dist: clean
 	mkdir -p st-$(VERSION)
