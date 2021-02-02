@@ -15,7 +15,7 @@ options:
 	@echo "LDFLAGS = $(STLDFLAGS)"
 	@echo "CC      = $(CC)"
 
-config.h:
+config.h: config.def.h patches/config.h.diff
 	cp config.def.h config.h
 	git apply patches/config.h.diff
 
