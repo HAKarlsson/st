@@ -17,6 +17,7 @@ options:
 
 config.h:
 	cp config.def.h config.h
+	git apply patches/config.h.diff
 
 .c.o:
 	$(CC) $(STCFLAGS) -c $<
